@@ -1,9 +1,13 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const CategoryItem = ({item}) => {
+    const navigation = useNavigation();
     return (
-        <TouchableOpacity style={styles.categoryItem}>
+        <TouchableOpacity  
+            onPress={() => navigation.navigate('Passages')}
+            style={styles.categoryItem}>
             <View style={styles.categoryItemView}>
             <Text style={styles.categoryItemText}>{item.categoryName}</Text>
             </View>
@@ -29,3 +33,11 @@ const styles = StyleSheet.create({
 })
 
 export default CategoryItem
+
+// onPress={() => navigation.navigate('Passages')
+
+// onPress={() => {
+//     alert('You tapped the button!');
+//   }} 
+
+
