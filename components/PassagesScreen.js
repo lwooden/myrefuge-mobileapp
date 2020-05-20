@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import {View, Text, StyleSheet, Platform, StatusBar, FlatList} from 'react-native';
+import {View, Text, StyleSheet, Platform, StatusBar, FlatList, TouchableOpacity} from 'react-native';
 import Header from './Header'
 import axios from 'axios'
+import { NavigationParams } from 'react-navigation'
 
 
-class PassagesScreen extends Component {
+class PassagesScreen extends React.Component<Props, State> {
     constructor(props) {
         super(props)
 
@@ -12,7 +13,8 @@ class PassagesScreen extends Component {
             details: [],
             category: ''
         }
-        console.log("Props passed to PassageScreen:",props) // check props that were passed down to this component
+        console.log("Props passed to PassageScreen:",props.route) // check props that were passed down to this component
+        // console.log(props.navigation.getParam('id'))
     }
 
 componentDidMount() {
@@ -22,7 +24,7 @@ componentDidMount() {
 
 
 getPassagesByCategory() {
-    const { params } = this.props.navigation.state
+    const { params } = this.props.route
     axios.get(`http://localhost:3001/api/categories/${params.id}/passages`)
     .then(response => {
         this.setState({details: response.data}, () => {
@@ -35,7 +37,7 @@ getPassagesByCategory() {
 
 
 setCategory() {
-    const { params } = this.props.navigation.state
+    const { params } = this.props.route
     axios.get(`http://localhost:3001/api/categories/${params.id}`)
     .then(response => {
         this.setState({category: response.data}, () => {
@@ -46,34 +48,37 @@ setCategory() {
 }
 
     render(){
-
+        // console.log(this.state.details)
         return (
-            <View style={styles.container}>
-              <Header />
+            <TouchableOpacity style={styles.categoryItem}>
+            <View style={styles.categoryItemView}>
               <FlatList 
                 data={this.state.details} 
-                renderItem={({pitem}) => <CategoryItem item={pitem}/>}
+                keyExtractor={(item) => item.id.toString()}
+                renderItem={({item}) => 
+                <Text style={styles.categoryItemText}>{item.passageText}</Text>}
               />
             </View>
+            </TouchableOpacity>
           )
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      paddingTop: 60
+  const styles = StyleSheet.create({
+    categoryItem: {
+        padding: 15,
+        backgroundColor: '#f8f8f8f8',
+        borderBottomWidth: 1,
+        borderColor: '#eee'
+    },
+    categoryItemView: {
+        flexDirection: 'row',
+    },
+    categoryItemText : {
+        fontSize: 18,
     }
-  
-  })
 
 
-// export default CategoryDetailsPage
-
-// const PassagesScreen = (props) => (
-//     <View>
-//     <Text>HelloWorld</Text>
-//     </View>
-//   )
+})
 
 export default PassagesScreen
