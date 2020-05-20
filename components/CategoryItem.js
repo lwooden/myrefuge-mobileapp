@@ -6,7 +6,7 @@ const CategoryItem = ({item}) => {
     const navigation = useNavigation();
     return (
         <TouchableOpacity  
-            onPress={() => navigation.navigate('Passages')}
+            onPress={() => navigation.navigate('Passages', item)}
             style={styles.categoryItem}>
             <View style={styles.categoryItemView}>
             <Text style={styles.categoryItemText}>{item.categoryName}</Text>
