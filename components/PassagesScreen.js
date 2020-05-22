@@ -3,9 +3,11 @@ import {View, Text, StyleSheet, Platform, StatusBar, FlatList, TouchableOpacity}
 import Header from './Header'
 import axios from 'axios'
 import { NavigationParams } from 'react-navigation'
+import PassageItem from './PassageItem'
 
 
-class PassagesScreen extends React.Component<Props, State> {
+// class PassagesScreen extends React.Component<Props, State> {
+class PassagesScreen extends React.Component {
     constructor(props) {
         super(props)
 
@@ -50,16 +52,19 @@ setCategory() {
     render(){
         // console.log(this.state.details)
         return (
-            <TouchableOpacity style={styles.categoryItem}>
+            // <TouchableOpacity style={styles.categoryItem}>
             <View style={styles.categoryItemView}>
+                
               <FlatList 
                 data={this.state.details} 
                 keyExtractor={(item) => item.id.toString()}
+                // renderItem={({item}) => <PassageItem item={item}/>}
                 renderItem={({item}) => 
-                <Text style={styles.categoryItemText}>{item.passageText}</Text>}
+                <Text style={styles.categoryItemText}>{item.passageText} 
+                    {"\n"}{item.passageLocation}{"\n"}</Text>}
               />
             </View>
-            </TouchableOpacity>
+            // {/* </TouchableOpacity> */}
           )
     }
 }

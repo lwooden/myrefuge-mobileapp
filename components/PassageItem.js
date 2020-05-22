@@ -2,14 +2,15 @@ import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const CategoryItem = ({pitem}) => {
+const PassageItem = ({item}) => {
     return (
-        <TouchableOpacity  
-            style={styles.categoryItem}>
+        // <TouchableOpacity  
+            // style={styles.categoryItem}>
             <View style={styles.categoryItemView}>
-            <Text style={styles.categoryItemText}>{pitem.passageText}</Text>
+            <Text style={styles.categoryItemText}>{item.passageText} 
+                    {"\n"}{item.passageLocation}{"\n"}</Text>}
             </View>
-        </TouchableOpacity>
+        // </TouchableOpacity>
     );
 };
 
@@ -30,7 +31,7 @@ const styles = StyleSheet.create({
 
 })
 
-export default CategoryItem
+export default PassageItem
 
 // onPress={() => navigation.navigate('Passages')
 
