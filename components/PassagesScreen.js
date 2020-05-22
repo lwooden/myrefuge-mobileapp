@@ -54,20 +54,20 @@ setCategory() {
         return (
             // <TouchableOpacity style={styles.categoryItem}>
             <View style={styles.categoryItemView}>
-                
               <FlatList 
                 data={this.state.details} 
                 keyExtractor={(item) => item.id.toString()}
-                // renderItem={({item}) => <PassageItem item={item}/>}
-                renderItem={({item}) => 
-                <Text style={styles.categoryItemText}>{item.passageText} 
-                    {"\n"}{item.passageLocation}{"\n"}</Text>}
+                renderItem={({item}) => <PassageItem item={item}/>}
+               // renderItem={({item}) => 
+                // <Text style={styles.categoryItemText}>{item.passageText} 
+                //     {"\n"}{item.passageLocation}{"\n"}</Text>}
               />
             </View>
             // {/* </TouchableOpacity> */}
           )
     }
 }
+
 
   const styles = StyleSheet.create({
     categoryItem: {

@@ -3,7 +3,6 @@ import React, {Component, useState} from 'react';
 import {View, Text, StyleSheet, Platform, StatusBar, FlatList} from 'react-native';
 import Header from './Header'
 import CategoryItem from './CategoryItem'
-import PassageScreen from './PassagesScreen'
 import axios from 'axios'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
