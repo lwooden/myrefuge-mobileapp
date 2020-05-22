@@ -4,10 +4,12 @@ import { useNavigation } from '@react-navigation/native';
 
 const PassageItem = ({item}) => {
     return (
+    <TouchableOpacity style={styles.categoryItem}>
     <View style={styles.categoryItemView}>
         <Text style={styles.categoryItemText}>{item.passageText} 
-            {"\n"}{item.passageLocation}{"\n"}</Text>
+            {"\n"}-{item.passageLocation}{"\n"}</Text>
     </View>
+    </TouchableOpacity>
 
     );
 };
