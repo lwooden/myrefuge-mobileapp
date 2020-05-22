@@ -54,7 +54,8 @@ setCategory() {
         return (
             // <TouchableOpacity style={styles.categoryItem}>
             <View style={styles.container}>
-                <Text style={styles.headerText}>{this.state.category.categoryName}{"\n"}</Text>
+            <Header title={this.state.category.categoryName} />
+                {/* <Text style={styles.headerText}>Verse About "{this.state.category.categoryName}"{"\n"}</Text> */}
               <FlatList 
                 data={this.state.details} 
                 keyExtractor={(item) => item.id.toString()}
@@ -85,10 +86,11 @@ setCategory() {
     },
     headerText : {
         fontSize: 24,
+        backgroundColor: '#f8f8f8f8'
     },
     container: {
         flex: 1,
-        paddingTop: 30
+        paddingTop: 0
       }
 
 
