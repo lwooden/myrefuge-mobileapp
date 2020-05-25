@@ -27,7 +27,7 @@ componentDidMount() {
 
 getPassagesByCategory() {
     const { params } = this.props.route
-    axios.get(`http://localhost:3001/api/categories/${params.id}/passages`)
+    axios.get(`http://localhost:3001/api/categories/${params.id}/passages?filter[order]=passageLocation%20ASC`)
     .then(response => {
         this.setState({details: response.data}, () => {
             // console.log(this.state)
