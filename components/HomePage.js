@@ -23,7 +23,7 @@ componentDidMount() {
 }
 
 getCategories() {
-  axios.get('http://localhost:3001/api/categories')
+  axios.get('http://localhost:3001/api/categories?filter[order]=categoryName%20ASC')
   .then(response => {
       this.setState({categories: response.data}, () => {
           console.log(this.state)
