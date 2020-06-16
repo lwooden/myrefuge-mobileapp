@@ -5,6 +5,9 @@ import axios from 'axios'
 import { NavigationParams } from 'react-navigation'
 import PassageItem from './PassageItem'
 
+const API_URL = "myRefuge-ALB-742005193.us-east-1.elb.amazonaws.com"
+// `http://localhost:3001/api/categories/${params.id}/passages?filter[order]=passageLocation%20ASC`
+
 
 // class PassagesScreen extends React.Component<Props, State> {
 class PassagesScreen extends React.Component {
@@ -27,7 +30,7 @@ componentDidMount() {
 
 getPassagesByCategory() {
     const { params } = this.props.route
-    axios.get(`http://localhost:3001/api/categories/${params.id}/passages?filter[order]=passageLocation%20ASC`)
+    axios.get(`http://${API_URL}/api/categories/${params.id}/passages?filter[order]=passageLocation%20ASC`)
     .then(response => {
         this.setState({details: response.data}, () => {
             // console.log(this.state)
@@ -40,7 +43,7 @@ getPassagesByCategory() {
 
 setCategory() {
     const { params } = this.props.route
-    axios.get(`http://localhost:3001/api/categories/${params.id}`)
+    axios.get(`http://${API_URL}/api/categories/${params.id}`)
     .then(response => {
         this.setState({category: response.data}, () => {
             // console.log(this.state)
